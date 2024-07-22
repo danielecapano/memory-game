@@ -1,0 +1,132 @@
+@font-face {
+  font-family: "Pixel";
+  src: url(./font/PressStart2P-Regular.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Pixel";
+}
+ul,
+ol,
+menu {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+button {
+  border: none;
+  outline: none;
+}
+
+body {
+  background-color: #3535ec;
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.title {
+  margin-top: 1rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.container {
+  width: min(500px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  padding-block: 1rem;
+}
+
+.cards {
+  /* max-width: 600px; */
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(50px, 1fr));
+  place-content: center;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  /* margin-bottom: 2rem; */
+}
+
+.card {
+  /* border: 1px solid black; */
+  position: relative;
+
+  max-width: 100px;
+  max-height: 100px;
+  transform: rotateY(180deg);
+  transition: all 0.3s ease-in-out;
+  &:after {
+    position: absolute;
+    /* opacity: 0.3; */
+    inset: 0;
+    content: "";
+    background-image: url(./images/back.png);
+    background-size: contain;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+  }
+}
+.card.open,
+.card.match {
+  transform: rotateY(0deg);
+}
+
+.open:after,
+.match:after {
+  transform: rotateY(180deg);
+}
+
+.front-card {
+  /* position: absolute; */
+  max-width: 100px;
+  max-height: 100px;
+  left: 0;
+  top: 0;
+  /* backface-visibility: hidden; */
+}
+
+.front-card {
+  transform: rotateY(180deg);
+}
+
+.btn {
+  display: block;
+  /* flex-grow: 1; */
+  margin-top: auto;
+  padding: 1rem 2rem;
+  color: #3535ec;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.buttons {
+  margin-block: 2rem;
+}
+
+.btn-level {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+.btn-level.active {
+  color: #3535ec;
+  background-color: #fff;
+  border: 2px solid #fff;
+}
